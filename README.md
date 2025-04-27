@@ -100,6 +100,26 @@ This project is a functional clone of Airbnb, built to demonstrate proficiency i
 - A Booking belongs to exactly one Property and one User (guest)
 - A Review belongs to exactly one Booking
 - A Payment belongs to exactly one Booking
+## Feature Breakdown
+### User Management
+User management provides secure authentication and profile systems allowing guests and hosts to create accounts, manage their profiles, and build reputation in the community. This feature forms the foundation of the platform's identity system, enabling personalized experiences and account-specific functionalities.
 
+### Property Management
+Property management enables hosts to create, update, and manage their property listings with detailed descriptions, photos, pricing, and availability calendars. This core feature gives property owners control over their listings while providing potential guests with comprehensive information needed to make informed booking decisions.
+
+### Booking System
+The booking system facilitates the reservation process from initial search to confirmation, handling date selection, pricing calculations, and booking status tracking. It serves as the primary transaction mechanism of the platform, coordinating the critical connection between guests seeking accommodations and hosts offering their properties.
+
+### Review and Rating System
+This feature allows guests to provide feedback and ratings after their stays, building trust in the community and helping future guests make informed decisions. The system also enables hosts to respond to reviews, creating transparent communication channels that enhance the platform's reliability.
+
+### Search and Filtering
+Advanced search functionality lets users find properties based on location, price range, amenities, dates, and other criteria for a tailored browsing experience. This discovery mechanism optimizes the user experience by efficiently connecting guests with relevant property listings that match their specific requirements.
+
+### Payment Processing
+Secure payment processing handles transactions between guests and hosts, including initial payments, refunds, and host payouts. This critical infrastructure ensures financial security while managing the monetary aspects of bookings with appropriate fee calculations and payment status tracking.
+
+### Messaging System
+An integrated messaging system enables direct communication between hosts and guests before, during, and after bookings for questions, coordination, and support. This feature facilitates clear communication channels that are essential for addressing specific needs and building trust between users.
 ## License
 *License information to be added*
