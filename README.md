@@ -162,5 +162,34 @@ An integrated messaging system enables direct communication between hosts and gu
 - **Compliance**: Our security measures help ensure compliance with relevant regulations like GDPR, CCPA, and industry standards.
 
 - **Threat Mitigation**: Implementing defense-in-depth security measures creates multiple layers of protection against evolving cyber threats.
+## CI/CD Pipeline
+## CI/CD Pipeline
+
+### Overview
+Our Continuous Integration and Continuous Deployment (CI/CD) pipeline automates the building, testing, and deployment processes of the application, ensuring code quality and streamlining the development workflow. This automation reduces manual errors, provides faster feedback loops, and enables more frequent, reliable releases.
+
+### Pipeline Components
+
+- **Continuous Integration**: Automatically builds and tests code changes when pushed to the repository
+- **Continuous Delivery**: Prepares code for deployment after successful testing
+- **Continuous Deployment**: Automatically deploys approved changes to production environments
+
+### Implementation Tools
+
+- **GitHub Actions**: Workflow automation directly integrated with our GitHub repository
+- **Docker**: Containerization for consistent environments across development, testing, and production
+- **pytest**: Automated testing framework for Python code
+- **Linters**: Code quality tools (flake8, ESLint) to ensure coding standards
+- **SonarQube**: Static code analysis to identify security vulnerabilities and code smells
+
+### Pipeline Workflow
+
+1. **Code Commit**: Developer pushes changes to a feature branch
+2. **Automated Tests**: Unit and integration tests run automatically
+3. **Code Quality Checks**: Linting and static analysis tools validate code quality
+4. **Build Process**: Application is built into Docker containers
+5. **Preview Deployment**: Changes deployed to staging environment for review
+6. **Approval Process**: Required approvals before production deployment
+7. **Production Deployment**: Automatic deployment to production after approval
 ## License
 *License information to be added*
