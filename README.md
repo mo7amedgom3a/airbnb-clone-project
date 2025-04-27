@@ -34,6 +34,14 @@ This project is a functional clone of Airbnb, built to demonstrate proficiency i
 
 ## Contributors
 *List of contributors will be added here*
+## Team Roles
 
+- **Backend Engineer**: Responsible for Django application development, API endpoints, and server-side logic
+- **Database Administrator**: Manages MySQL database schema, optimizes queries, and ensures data integrity
+- **Frontend Developer**: Creates responsive UI components and implements client-side functionality
+- **DevOps Engineer**: Handles Docker containerization, CI/CD pipeline configuration, and deployment strategies
+- **QA Specialist**: Conducts testing, identifies bugs, and ensures overall application quality
+- **Project Manager**: Coordinates team efforts, tracks progress, and manages project timelines
+- **Security Specialist**: Implements authentication, authorization, and ensures data protection measures
 ## License
 *License information to be added*
