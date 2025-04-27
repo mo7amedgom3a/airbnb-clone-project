@@ -53,5 +53,53 @@ This project is a functional clone of Airbnb, built to demonstrate proficiency i
 - **Docker**: Platform for developing, shipping, and running applications in containers
 - **GitHub Actions**: CI/CD automation tool integrated with the GitHub repository
 - **Git/GitHub**: Version control system and platform for collaborative development workflow
+## Database Design
+### Key Entities
+#### Users
+- **user_id**: Unique identifier for each user
+- **email**: User's email address (used for authentication)
+- **name**: User's full name
+- **profile_picture**: URL to user's profile image
+- **date_joined**: When the user created their account
+
+#### Properties
+- **property_id**: Unique identifier for each property
+- **host_id**: Reference to the user who owns this property
+- **title**: Property listing title
+- **location**: Address/geographic coordinates
+- **price_per_night**: Base nightly rate
+- **description**: Detailed property description
+
+#### Bookings
+- **booking_id**: Unique identifier for each booking
+- **property_id**: Reference to the booked property
+- **guest_id**: Reference to the user making the booking
+- **check_in_date**: Start date of stay
+- **check_out_date**: End date of stay
+- **total_price**: Total cost of the booking
+
+#### Reviews
+- **review_id**: Unique identifier for each review
+- **booking_id**: Reference to the booking this review is for
+- **rating**: Numerical rating (typically 1-5)
+- **comment**: Text feedback from the guest
+- **date_posted**: When the review was submitted
+
+#### Payments
+- **payment_id**: Unique identifier for each payment
+- **booking_id**: Reference to the associated booking
+- **amount**: Payment amount
+- **status**: Payment status (pending, completed, failed)
+- **transaction_date**: When the payment was processed
+
+### Entity Relationships
+
+- A User can have multiple Properties (as a host)
+- A User can have multiple Bookings (as a guest)
+- A Property can have multiple Bookings
+- A Booking belongs to exactly one Property and one User (guest)
+- A Review belongs to exactly one Booking
+- A Payment belongs to exactly one Booking
+
 ## License
 *License information to be added*
