@@ -43,5 +43,15 @@ This project is a functional clone of Airbnb, built to demonstrate proficiency i
 - **QA Specialist**: Conducts testing, identifies bugs, and ensures overall application quality
 - **Project Manager**: Coordinates team efforts, tracks progress, and manages project timelines
 - **Security Specialist**: Implements authentication, authorization, and ensures data protection measures
+
+## Technology Stack
+### Technology Stack Details
+
+- **Django**: Python-based web framework powering the backend application logic and MVC architecture
+- **MySQL**: Relational database management system for structured data storage and retrieval
+- **GraphQL**: Query language for APIs, providing a more efficient alternative to REST
+- **Docker**: Platform for developing, shipping, and running applications in containers
+- **GitHub Actions**: CI/CD automation tool integrated with the GitHub repository
+- **Git/GitHub**: Version control system and platform for collaborative development workflow
 ## License
 *License information to be added*
