@@ -54,52 +54,81 @@ This project is a functional clone of Airbnb, built to demonstrate proficiency i
 - **GitHub Actions**: CI/CD automation tool integrated with the GitHub repository
 - **Git/GitHub**: Version control system and platform for collaborative development workflow
 ## Database Design
-### Key Entities
+### Entity Structure
+![Database Entity Relationship Diagram](images/airbnb-clone-erd.png)
+### Entity Relationship Diagram
+
+### 
+The diagram above illustrates the relationships between key entities in our database system, showing the interconnections between Users, Properties, Bookings, Payments, Reviews, and Messages.
 #### Users
-- **user_id**: Unique identifier for each user
-- **email**: User's email address (used for authentication)
-- **name**: User's full name
-- **profile_picture**: URL to user's profile image
-- **date_joined**: When the user created their account
+- **user_id**: Primary Key, UUID, Indexed
+- **first_name**: VARCHAR, NOT NULL
+- **last_name**: VARCHAR, NOT NULL
+- **email**: VARCHAR, UNIQUE, NOT NULL
+- **password_hash**: VARCHAR, NOT NULL
+- **phone_number**: VARCHAR, NULL
+- **role**: ENUM (guest, host, admin), NOT NULL
+- **created_at**: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
 #### Properties
-- **property_id**: Unique identifier for each property
-- **host_id**: Reference to the user who owns this property
-- **title**: Property listing title
-- **location**: Address/geographic coordinates
-- **price_per_night**: Base nightly rate
-- **description**: Detailed property description
+- **property_id**: Primary Key, UUID, Indexed
+- **host_id**: Foreign Key, references User(user_id)
+- **name**: VARCHAR, NOT NULL
+- **description**: TEXT, NOT NULL
+- **location**: VARCHAR, NOT NULL
+- **price_per_night**: DECIMAL, NOT NULL
+- **created_at**: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
+- **updated_at**: TIMESTAMP, ON UPDATE CURRENT_TIMESTAMP
 
 #### Bookings
-- **booking_id**: Unique identifier for each booking
-- **property_id**: Reference to the booked property
-- **guest_id**: Reference to the user making the booking
-- **check_in_date**: Start date of stay
-- **check_out_date**: End date of stay
-- **total_price**: Total cost of the booking
-
-#### Reviews
-- **review_id**: Unique identifier for each review
-- **booking_id**: Reference to the booking this review is for
-- **rating**: Numerical rating (typically 1-5)
-- **comment**: Text feedback from the guest
-- **date_posted**: When the review was submitted
+- **booking_id**: Primary Key, UUID, Indexed
+- **property_id**: Foreign Key, references Property(property_id)
+- **user_id**: Foreign Key, references User(user_id)
+- **start_date**: DATE, NOT NULL
+- **end_date**: DATE, NOT NULL
+- **total_price**: DECIMAL, NOT NULL
+- **status**: ENUM (pending, confirmed, canceled), NOT NULL
+- **created_at**: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
 #### Payments
-- **payment_id**: Unique identifier for each payment
-- **booking_id**: Reference to the associated booking
-- **amount**: Payment amount
-- **status**: Payment status (pending, completed, failed)
-- **transaction_date**: When the payment was processed
+- **payment_id**: Primary Key, UUID, Indexed
+- **booking_id**: Foreign Key, references Booking(booking_id)
+- **amount**: DECIMAL, NOT NULL
+- **payment_date**: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
+- **payment_method**: ENUM (credit_card, paypal, stripe), NOT NULL
+
+#### Reviews
+- **review_id**: Primary Key, UUID, Indexed
+- **property_id**: Foreign Key, references Property(property_id)
+- **user_id**: Foreign Key, references User(user_id)
+- **rating**: INTEGER, CHECK: rating >= 1 AND rating <= 5, NOT NULL
+- **comment**: TEXT, NOT NULL
+- **created_at**: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
+
+#### Messages
+- **message_id**: Primary Key, UUID, Indexed
+- **sender_id**: Foreign Key, references User(user_id)
+- **recipient_id**: Foreign Key, references User(user_id)
+- **message_body**: TEXT, NOT NULL
+- **sent_at**: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
 ### Entity Relationships
 
-- A User can have multiple Properties (as a host)
-- A User can have multiple Bookings (as a guest)
+- A User can be either a guest, host, or admin
+- A User (as host) can have multiple Properties
+- A User (as guest) can make multiple Bookings
 - A Property can have multiple Bookings
 - A Booking belongs to exactly one Property and one User (guest)
-- A Review belongs to exactly one Booking
 - A Payment belongs to exactly one Booking
+- Reviews are linked to specific Properties and Users
+- Messages can be sent between Users
+
+### Constraints and Indexing
+
+- Unique constraint on User email
+- Rating values constrained between 1-5
+- All primary keys are automatically indexed
+- Additional indexes on frequently accessed fields
 ## Feature Breakdown
 ### User Management
 User management provides secure authentication and profile systems allowing guests and hosts to create accounts, manage their profiles, and build reputation in the community. This feature forms the foundation of the platform's identity system, enabling personalized experiences and account-specific functionalities.
